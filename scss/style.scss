@@ -1,0 +1,67 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Raleway', sans-serif;
+	.flipper-container {
+		max-width: 300px;
+		height: 450px;
+		margin: 20px auto;
+		perspective: 1000px;
+		.flipping-card {
+			margin: 0 auto;
+			width: 300px;
+			height: 450px;
+			transition: all 1s ease;
+			position: relative;
+			transform-style: preserve-3d;
+			&:hover {
+				transition: all 1s cubic-bezier(.05,.97,.29,.7);
+				backface-visibility: hidden;
+			}
+			.front-card, .back-card {
+				position: absolute;
+				backface-visibility: hidden;
+				top: 0;
+				left: 0;
+				width: 300px;
+				height: 450px;
+			}
+			.front-card {
+				z-index: 2;
+			}
+			.back-card {
+				transform: rotateY(180deg);
+				background-color: rgba(207, 200, 248, 0.76);
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				box-shadow: inset 6px 10px 67px 3px rgba(182, 170, 247, 0.91);
+				p {
+					font-size: 3em;
+					text-align: center;
+					text-transform: uppercase;
+					color: white;
+					letter-spacing: 2px;
+				}
+				a {
+					display: block;
+					text-decoration: none;
+					text-transform: uppercase;
+					color: white;
+					border-radius: 5px;
+					padding: 10px 15px;
+					background-color: rgba(87, 59, 248, 0.73);
+				}
+			}
+		}
+	}
+}
+
+.flipper-container:hover .flipping-card, .flipper-container.hover .flipping-card {
+	transform: rotateY(180deg);
+}
+
+.st0, .st1 {
+	visibility: hidden;
+}
